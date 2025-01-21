@@ -13,7 +13,15 @@
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ],
-      "envFile": "${workspaceFolder}/.env"
+      "env": {
+        "BUILD_REPOSITORY_NAME": "ISXXX0001",
+        "SYSTEM_DEFAULTWORKINGDIRECTORY": "apps/prVerifier/prVerifierV1/exampleFiles",
+        "SYSTEM_TEAMFOUNDATIONCOLLECTIONURI": "https://dev.azure.com/GrupoBancolombia/",
+        "SYSTEM_TEAMPROJECTID": "b267af7c-3233-4ad1-97b3-91083943100d",
+        "INPUT_AZUREDEVOPSSERVICE": "123456",
+        "ENDPOINT_AUTH_PARAMETER_123456_APITOKEN": "*****", //!!!NUNCA VERSIONAR!!! Token de Azure DevOps PDN
+        "INPUT_AZUREOPENAIAPISERVICE": "12c8843d-4959-4d89-a8c5-bde65fc249a8"
+      }
     }
   ]
 }
