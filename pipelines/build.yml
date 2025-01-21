@@ -8,13 +8,13 @@ steps:
     inputs:
       hostedAgentService: "90469226-70c7-4fd9-acf1-a6f54739e00a"
 
-  - task: FileTransform@1
+  - task: FileTransform@2
     displayName: "File Transform extension"
     inputs:
       folderPath: "$(System.DefaultWorkingDirectory)"
       fileType: json
       targetFiles: |
-        apps/**/task.json
+        task.json
         vss-extension.json
 
   - task: SonarQubePrepare@6

@@ -37,19 +37,11 @@
       "required": true,
       "helpMarkDown": "Azure OpenAI API token",
       "groupName": "Connections"
-    },
-    {
-      "name": "AZUREDEVOPSSERVICE",
-      "type": "connectedService:server-connection-rotation",
-      "label": "Azure DevOps service endpoint",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "Azure DevOps service endpoint used for create token with rotation strategy"
     }
   ],
   "execution": {
     "Node16": {
-      "target": "src/index.js"
+      "target": "index.js"
     }
   }
 }
