@@ -30,10 +30,10 @@ steps:
       extraProperties: |
         sonar.projectBaseDir=$(System.DefaultWorkingDirectory)
         sonar.exclusions=node_modules/**,coverage/**,examples/**,docs/**,reports/**,**/node_modules/**,**/*.js
-        sonar.sources=apps
-        sonar.inclusions=**/src/**
-        sonar.tests=apps
-        sonar.test.inclusions=**/__test__/**,**/*Test.ts,**/*test.ts,**/*spec.ts
+        sonar.sources=src/**
+        sonar.inclusions=src/**
+        sonar.tests=tests/**
+        sonar.test.inclusions=tests/**
         sonar.testExecutionReportPaths=coverage/sonar-report.xml
         sonar.typescript.lcov.reportPaths=coverage/lcov.info
         sonar.coverage.exclusions=test/**,*.spec.ts,**/*.spec.ts

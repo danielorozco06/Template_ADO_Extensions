@@ -1,0 +1,55 @@
+{
+  "id": "271cab5f-0c06-43e4-ad40-abcdb90f9cf5",
+  "name": "pullrequest-verifier-task",
+  "friendlyName": "Pull request verifier task",
+  "description": "This task checks pull requests changes",
+  "helpMarkDown": "#{Build.BuildNumber}#",
+  "category": "Azure Pipelines",
+  "visibility": [
+    "Build"
+  ],
+  "author": "DevOps Team",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "icons": {
+    "default": "icon.png"
+  },
+  "runsOn": [
+    "Agent"
+  ],
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Pull request verifier task",
+  "groups": [
+    {
+      "name": "Connections",
+      "displayName": "Connections",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "AZUREOPENAIAPISERVICE",
+      "type": "connectedService:Generic",
+      "label": "Azure OpenAI API token",
+      "required": true,
+      "helpMarkDown": "Azure OpenAI API token",
+      "groupName": "Connections"
+    },
+    {
+      "name": "AZUREDEVOPSSERVICE",
+      "type": "connectedService:server-connection-rotation",
+      "label": "Azure DevOps service endpoint",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Azure DevOps service endpoint used for create token with rotation strategy"
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "src/index.js"
+    }
+  }
+}

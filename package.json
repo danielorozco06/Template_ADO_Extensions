@@ -13,7 +13,8 @@
     "build": "tsc --sourceMap false",
     "test": "jest --coverage --silent=true",
     "coverage": "open-cli coverage/lcov-report/index.html",
-    "package": "rm -rf node_modules && npm install --omit=dev -q",
+    "copy": "cp package.json dist/package.json && cp task.json dist/task.json && cp vss-extension.json dist/vss-extension.json && cp -r assets dist/assets",
+    "package": "cd dist/ && npm run copy && npm install --omit=dev -q",
     "build:dev": "tsc --watch",
     "test:dev": "jest --coverage --watchAll --silent=true"
   },
