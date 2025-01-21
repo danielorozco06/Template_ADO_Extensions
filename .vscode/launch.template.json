@@ -5,17 +5,11 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Azure Repos Lister",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "env": {
-        "BUILD_REPOSITORY_NAME": "ISXXX0001",
-        "SYSTEM_DEFAULTWORKINGDIRECTORY": "apps/prVerifier/prVerifierV1/exampleFiles",
         "SYSTEM_TEAMFOUNDATIONCOLLECTIONURI": "https://dev.azure.com/GrupoBancolombia/",
         "SYSTEM_TEAMPROJECTID": "b267af7c-3233-4ad1-97b3-91083943100d",
         "INPUT_AZUREDEVOPSSERVICE": "123456",

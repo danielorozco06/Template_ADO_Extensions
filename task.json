@@ -31,11 +31,12 @@
   ],
   "inputs": [
     {
-      "name": "AZUREOPENAIAPISERVICE",
-      "type": "connectedService:Generic",
-      "label": "Azure OpenAI API token",
+      "name": "AZUREDEVOPSSERVICE",
+      "type": "connectedService:server-connection-rotation",
+      "label": "Azure DevOps service endpoint",
+      "defaultValue": "rsc-svchca03-prVerifier-pdn",
       "required": true,
-      "helpMarkDown": "Azure OpenAI API token",
+      "helpMarkDown": "Azure DevOps service endpoint used for create token with rotation strategy",
       "groupName": "Connections"
     }
   ],
