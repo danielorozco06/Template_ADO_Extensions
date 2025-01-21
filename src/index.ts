@@ -8,9 +8,7 @@ dotenv.config();
 const { AZURE_DEVOPS_ORG, AZURE_DEVOPS_TOKEN } = process.env;
 
 if (!AZURE_DEVOPS_ORG || !AZURE_DEVOPS_TOKEN) {
-  console.error(
-    'Error: AZURE_DEVOPS_ORG and AZURE_DEVOPS_TOKEN environment variables are required'
-  );
+  console.error('Error: AZURE_DEVOPS_ORG and AZURE_DEVOPS_TOKEN environment variables are required');
   process.exit(1);
 }
 
@@ -19,10 +17,7 @@ async function main(): Promise<void> {
     // Create repository implementation
     // We can safely assert these are strings since we checked above
     const orgUrl = `https://dev.azure.com/${AZURE_DEVOPS_ORG as string}`;
-    const repository = new AzureDevOpsRepository(
-      orgUrl,
-      AZURE_DEVOPS_TOKEN as string
-    );
+    const repository = new AzureDevOpsRepository(orgUrl, AZURE_DEVOPS_TOKEN as string);
 
     // Create and execute use case
     const listRepositories = new ListRepositoriesUseCase(repository);

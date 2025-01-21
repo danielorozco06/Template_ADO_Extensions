@@ -1,0 +1,4 @@
+# Ignore paths:
+**/dist
+**/node_modules
+**/coverage
