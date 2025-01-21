@@ -13,7 +13,10 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "coverage": "open-cli coverage/lcov-report/index.html",
+    "build:dev": "tsc --watch",
+    "test:dev": "jest --config jest.config.ts --coverage --watchAll --silent=true"
   },
   "keywords": [
     "azure-devops",
@@ -35,6 +38,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8",
+    "open-cli": "^8.0.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.1.6"
   }
