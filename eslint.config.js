@@ -13,6 +13,10 @@ export default [
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module'
+      },
+      globals: {
+        console: 'readonly',
+        process: 'readonly'
       }
     },
     plugins: {
@@ -25,7 +29,8 @@ export default [
       'prettier/prettier': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
-      '@typescript-eslint/no-explicit-any': 'error'
+      '@typescript-eslint/no-explicit-any': 'error',
+      'no-console': 'off'
     }
   }
 ];

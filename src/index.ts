@@ -1,9 +1,5 @@
-import dotenv from 'dotenv';
 import { AzureDevOpsRepository } from './infrastructure/repositories/azure-devops-repository.js';
 import { ListRepositoriesUseCase } from './application/use-cases/list-repositories.use-case.js';
-
-// Load environment variables
-dotenv.config();
 
 const { AZURE_DEVOPS_ORG, AZURE_DEVOPS_TOKEN } = process.env;
 
