@@ -1,0 +1,78 @@
+steps:
+  - task: NodeTool@0
+    displayName: "Use Node 16.x"
+    inputs:
+      versionSpec: 16.x
+
+  - task: connect-agent@2
+    inputs:
+      hostedAgentService: "90469226-70c7-4fd9-acf1-a6f54739e00a"
+
+  - task: FileTransform@1
+    displayName: "File Transform extension"
+    inputs:
+      folderPath: "$(System.DefaultWorkingDirectory)"
+      fileType: json
+      targetFiles: |
+        apps/**/task.json
+        vss-extension.json
+
+  - task: SonarQubePrepare@6
+    displayName: "Prepare analysis on SonarQube"
+    inputs:
+      SonarQube: SonarQube
+      scannerMode: CLI
+      configMode: manual
+      cliProjectKey: "$(Build.Repository.Name)"
+      cliProjectName: "$(Build.Repository.Name)"
+      cliProjectVersion: "$(Build.BuildNumber)"
+      cliSources: "$(System.DefaultWorkingDirectory)"
+      extraProperties: |
+        sonar.projectBaseDir=$(System.DefaultWorkingDirectory)
+        sonar.exclusions=node_modules/**,coverage/**,examples/**,docs/**,reports/**,**/node_modules/**,**/*.js
+        sonar.sources=apps
+        sonar.inclusions=**/src/**
+        sonar.tests=apps
+        sonar.test.inclusions=**/__test__/**,**/*Test.ts,**/*test.ts,**/*spec.ts
+        sonar.testExecutionReportPaths=coverage/sonar-report.xml
+        sonar.typescript.lcov.reportPaths=coverage/lcov.info
+        sonar.coverage.exclusions=test/**,*.spec.ts,**/*.spec.ts
+        sonar.sourceEncoding=UTF-8
+
+  - task: Npm@1
+    displayName: "Install"
+    inputs:
+      command: "install"
+      workingDir: "$(System.DefaultWorkingDirectory)"
+      verbose: false
+
+  - task: Npm@1
+    displayName: "Build"
+    inputs:
+      command: custom
+      workingDir: "$(System.DefaultWorkingDirectory)"
+      verbose: false
+      customCommand: run build
+
+  - task: Npm@1
+    displayName: "Unit Test"
+    inputs:
+      command: custom
+      workingDir: "$(System.DefaultWorkingDirectory)"
+      verbose: false
+      customCommand: run test
+
+  - task: SonarQubeAnalyze@6
+    displayName: "Run Code Analysis"
+
+  - task: sonar-buildbreaker@8
+    inputs:
+      SonarQube: "SonarQube"
+
+  - task: Npm@1
+    displayName: "Package"
+    inputs:
+      command: custom
+      workingDir: "$(System.DefaultWorkingDirectory)"
+      verbose: false
+      customCommand: run package
