@@ -24,6 +24,7 @@ export default [
       '@typescript-eslint/prefer-readonly': 'error',
       '@typescript-eslint/no-namespace': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/return-await': 'error',
       'no-duplicate-imports': [
         'error',
         {
