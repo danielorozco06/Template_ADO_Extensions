@@ -23,6 +23,20 @@ export default [
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/prefer-readonly': 'error',
       '@typescript-eslint/no-namespace': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      'no-duplicate-imports': [
+        'error',
+        {
+          includeExports: true
+        }
+      ],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'ImportNamespaceSpecifier',
+          message: 'No uses `import * as`. Por favor, importa solo los miembros específicos que necesitas.'
+        }
+      ],
       ...tsPlugin.configs.recommended.rules
     }
   }
